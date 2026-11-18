@@ -1,0 +1,160 @@
+{
+	"generatedAt": "2026-10-21T04:10:35.410Z",
+	"blueprint": {
+		"serverName": "mcp-project-chronos",
+		"namespacePrefix": "chronos",
+		"targetDir": ".",
+		"projectType": "library",
+		"plugins": [
+			"rules"
+		],
+		"tools": [
+			{
+				"name": "check_project_state",
+				"description": "Single source of truth the agent calls first each turn: returns conventions, gates and what to do next."
+			},
+			{
+				"name": "get_validation_matrix",
+				"description": "Returns the quality-gate commands per scope."
+			},
+			{
+				"name": "audit_public_api",
+				"description": "Flags breaking changes to the exported surface."
+			},
+			{
+				"name": "run_lint",
+				"description": "Run the project's lint command and return a structured pass/fail report."
+			},
+			{
+				"name": "run_test",
+				"description": "Run the project's test command and return a structured pass/fail report."
+			},
+			{
+				"name": "run_build",
+				"description": "Run the project's build command and return a structured pass/fail report."
+			},
+			{
+				"name": "run_typecheck",
+				"description": "Run the project's typecheck command and return a structured pass/fail report."
+			},
+			{
+				"name": "run_clean",
+				"description": "Run the project's clean command and return a structured pass/fail report."
+			},
+			{
+				"name": "run_test:watch",
+				"description": "Run the project's test:watch command and return a structured pass/fail report."
+			},
+			{
+				"name": "run_verify",
+				"description": "Run the project's verify command and return a structured pass/fail report."
+			},
+			{
+				"name": "run_dev",
+				"description": "Run the project's dev command and return a structured pass/fail report."
+			},
+			{
+				"name": "run_chronos:bootstrap",
+				"description": "Run the project's chronos:bootstrap command and return a structured pass/fail report."
+			},
+			{
+				"name": "run_chronos:cycle",
+				"description": "Run the project's chronos:cycle command and return a structured pass/fail report."
+			}
+		],
+		"prompts": [
+			{
+				"name": "start",
+				"description": "Orient and start working in this project.",
+				"body": "You are working in **chronos-forge-omnibus** (`library`, `typescript`).\n\nFirst call `chronos_overview` — it is the canonical map of this server's tools, plugins and a `recommendedNextAction`. Follow the recommendation.\n\n## Project shape\n\n- Type: `library`\n- Framework: _(none detected)_\n- Monorepo tool: _(none)_\n- Test runner: `node`\n- Package manager: `npm`\n\n## Quality gates\n\n- `lint` → `eslint . --max-warnings=0`\n- `test` → `node --test --import ./test/register.ts test/`\n- `build` → `tsc -p tsconfig.json`\n- `typecheck` → `tsc -p tsconfig.json --noEmit`\n- `clean` → `node -e \"fs.rmSync('dist',{recursive:true,force:true})\"`\n- `test:watch` → `node --test --watch --import ./test/register.ts test/`\n- `verify` → `npm run typecheck && npm run lint && npm run test`\n- `dev` → `node --watch --import ./scripts/dev-loader.ts scripts/dev.ts`\n- `chronos:bootstrap` → `node --import ./scripts/dev-loader.ts scripts/bootstrap.ts`\n- `chronos:cycle` → `node --import ./scripts/dev-loader.ts scripts/cycle.ts`\n\n## When you change the project\n\n1. Re-run `chronos_analyze_project` to refresh the analysis.\n2. If the project grew (new scripts, new framework deps, new monorepo packages), call `chronos_plan_mcp_project` to refresh the blueprint and `chronos_create_project` to materialise the new tools.\n3. Never invent tool names; only call what `overview` lists."
+			},
+			{
+				"name": "fix quality",
+				"description": "Run the gates and fix what fails.",
+				"body": "Run the project quality gates in this order and fix what fails:\n1. `lint` → `eslint . --max-warnings=0`\n1. `test` → `node --test --import ./test/register.ts test/`\n1. `build` → `tsc -p tsconfig.json`\n1. `typecheck` → `tsc -p tsconfig.json --noEmit`\n1. `clean` → `node -e \"fs.rmSync('dist',{recursive:true,force:true})\"`\n1. `test:watch` → `node --test --watch --import ./test/register.ts test/`\n1. `verify` → `npm run typecheck && npm run lint && npm run test`\n1. `dev` → `node --watch --import ./scripts/dev-loader.ts scripts/dev.ts`\n1. `chronos:bootstrap` → `node --import ./scripts/dev-loader.ts scripts/bootstrap.ts`\n1. `chronos:cycle` → `node --import ./scripts/dev-loader.ts scripts/cycle.ts`\n\nIf a gate is broken because of an external dep (downstream service, network, missing env), record it as `external-gate-blocker` with the evidence and continue."
+			}
+		],
+		"skills": [
+			{
+				"name": "project standards",
+				"description": "Closed stack and conventions of the project.",
+				"body": "## Project facts\n\n- Name: `chronos-forge-omnibus`\n- Type: `library`\n- Language: `typescript`\n- Framework: `(none)`\n- Monorepo: `(none)`\n- Package manager: `npm`\n- Test runner: `node`\n- MCP server: _not detected_\n- CI: _(none detected)_\n- Agent configs already in repo: _(none detected)_\n\n## Language conventions\n\n- `strict: true` in tsconfig — no implicit any.\n- Prefer `readonly` and discriminated unions over enums.\n\n",
+				"whenToUse": [
+					"Before writing or reviewing code in this project.",
+					"When a code review questions a project-wide convention."
+				]
+			}
+		],
+		"agents": [
+			{
+				"slot": "orchestrator",
+				"description": "Root orchestrator for this project."
+			}
+		],
+		"tests": true,
+		"hasExistingServer": false,
+		"adoptionStrategy": {
+			"mode": "replace",
+			"selectedCapabilities": [
+				"tools",
+				"prompts",
+				"resources",
+				"knowledge",
+				"skills",
+				"agents",
+				"mcp-config",
+				"proposal-workflow"
+			],
+			"operations": [
+				{
+					"capability": "tools",
+					"action": "replace"
+				},
+				{
+					"capability": "prompts",
+					"action": "replace"
+				},
+				{
+					"capability": "resources",
+					"action": "replace"
+				},
+				{
+					"capability": "knowledge",
+					"action": "replace"
+				},
+				{
+					"capability": "skills",
+					"action": "replace"
+				},
+				{
+					"capability": "agents",
+					"action": "replace"
+				},
+				{
+					"capability": "mcp-config",
+					"action": "replace"
+				},
+				{
+					"capability": "proposal-workflow",
+					"action": "replace"
+				}
+			],
+			"protectedCapabilities": [],
+			"requiresExplicitReplacementConsent": false
+		},
+		"defaults": {
+			"keepLegacy": false,
+			"reasons": [
+				"greenfield-safe default"
+			],
+			"warnings": []
+		},
+		"notes": [
+			"Guard the public barrel; treat exports as a contract.",
+			"Run typecheck + tests as the gate before publish.",
+			"No MCP server found: create one from this blueprint (scaffold the host project, then each tool/prompt/skill/agent).",
+			"Generate a test alongside each tool.",
+			"Recommended keepLegacy=false: greenfield-safe default."
+		]
+	}
+}

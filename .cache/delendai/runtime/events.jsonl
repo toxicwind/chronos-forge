@@ -1,0 +1,11 @@
+{"version":1,"ts":"2026-10-21T04:10:35.305Z","kind":"session.started","meta":{"mode":"managed","workspace":"/home/toxic/estate/ranch/chronos-forge"},"sessionId":"mvhlgmnd-c0b576074c"}
+{"version":1,"ts":"2026-10-21T04:10:35.427Z","kind":"tool.started","toolName":"delendai_resolve_capability","sessionId":"mvhlgmnd-c0b576074c"}
+{"version":1,"ts":"2026-10-21T04:10:35.429Z","kind":"tool.started","toolName":"delendai_adopt_project","sessionId":"mvhlgmnd-c0b576074c"}
+{"version":1,"ts":"2026-10-21T04:10:35.443Z","kind":"tool.completed","toolName":"delendai_adopt_project","elapsedMs":12.93742599999996,"error":false,"estimatedTokens4B":5679,"sessionId":"mvhlgmnd-c0b576074c"}
+{"version":1,"ts":"2026-10-21T04:10:35.443Z","kind":"tool.completed","toolName":"delendai_resolve_capability","elapsedMs":16.260520999999926,"error":false,"estimatedTokens4B":11855,"sessionId":"mvhlgmnd-c0b576074c"}
+{"version":1,"ts":"2026-10-21T04:11:17.191Z","kind":"session.started","meta":{"mode":"managed","workspace":"/home/toxic/estate/ranch/chronos-forge"},"sessionId":"mvhlhiyv-04f55e809d"}
+{"version":1,"ts":"2026-10-21T04:11:17.278Z","kind":"tool.started","toolName":"delendai_overview","sessionId":"mvhlhiyv-04f55e809d"}
+{"version":1,"ts":"2026-10-21T04:11:17.284Z","kind":"tool.completed","toolName":"delendai_overview","elapsedMs":5.673287000000073,"error":false,"estimatedTokens4B":209,"sessionId":"mvhlhiyv-04f55e809d"}
+{"version":1,"ts":"2026-10-21T04:11:36.021Z","kind":"session.started","meta":{"mode":"managed","workspace":"/home/toxic/estate/ranch/chronos-forge"},"sessionId":"mvhlhxhx-d0afde6dd1"}
+{"version":1,"ts":"2026-10-21T04:11:36.309Z","kind":"tool.started","toolName":"delendai_overview","sessionId":"mvhlhxhx-d0afde6dd1"}
+{"version":1,"ts":"2026-10-21T04:11:36.323Z","kind":"tool.completed","toolName":"delendai_overview","elapsedMs":13.279383000000053,"error":false,"estimatedTokens4B":344,"sessionId":"mvhlhxhx-d0afde6dd1"}
